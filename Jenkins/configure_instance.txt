@@ -7,3 +7,58 @@ aws configure
 
 #start JENKINS -> http://__.__.__.__:8080/
 
+#Скрипт pipline1
+--- --- --- --- --- --- --- --- --- --- ---
+pipeline {
+    agent any
+    stages{
+        stage('Cloning Git'){
+            steps{
+                git branch: 'main', url: 'https://github.com/E1SGRAU/T___ ___ ___ ___'
+            }
+        }
+        stage('Check files'){
+            steps{
+                sh 'ls -la'
+            }
+        }
+        stage('Terraform init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+        stage('Terraform apply'){
+            steps{
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
+--- --- --- --- --- --- --- --- --- --- ---
+#Зберігаємо та запускаємо
+--- --- --- --- --- --- --- --- --- --- ---
+#Скрипт pipline2
+--- --- --- --- --- --- --- --- --- --- ---
+pipeline {
+    agent any
+    stages{
+        stage('Cloning Git'){
+            steps{
+                git branch: 'main', url: 'https://github.com/E1SGRAU/T___ ___ ___ ___'
+            }
+        }
+        stage('Terraform destroy'){
+            steps{
+                sh 'terraform destroy -auto-approve'
+            }
+        }
+    }
+}
+--- --- --- --- --- --- --- --- --- --- ---
+#Зберігаємо та запускаємо
+--- --- --- --- --- --- --- --- --- --- ---
