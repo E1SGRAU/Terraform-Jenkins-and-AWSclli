@@ -1,0 +1,9 @@
+#configure clli
+aws configure
+    #Enter -> AWS Access Key ID
+    #Enter -> AWS Secret Access Key
+    #Enter -> Default region name
+    #Enter -> Default output format: json
+
+#start JENKINS -> http://__.__.__.__:8080/
+
